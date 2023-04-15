@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-address-card',
@@ -8,13 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class AddressCardComponent implements OnInit{
   
   user:any;
+  @Input('name') userName: String; 
+
 constructor(){
-  this.user={
-    name:'Mrityunjay Upadhyay',
+}
+    
+  ngOnInit(): void {
+    this.user={    
+    name:this.userName,
         title:'Software Developer',
         address:'1234 Main St, City, State, 100010',
-    
-    phone:[
+         phone:[
       '123-123-123-1234',
       '456-456-456',
       '567-897-543-432'
@@ -22,10 +26,8 @@ constructor(){
     
     }
 }
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+}
+  
 
   
-}
+
